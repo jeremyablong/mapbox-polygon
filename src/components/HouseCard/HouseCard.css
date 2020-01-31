@@ -1,0 +1,41 @@
+.house-card-item {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    border: 1px solid rgb(237, 238, 239);
+}
+
+.house-card-item svg {
+    color: #9d9d9d;
+}
+
+.address {
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+}
+
+.list-price {
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    margin-top: auto;
+}
+
+.list-price span {
+    margin-left: 8px;
+}
+
+.house-card-item p {
+    font-size: 16px;
+}
+
+.home-amenities {
+    display: flex;
+    margin-top: auto;
+    align-items: flex-end;
+}
+
+.home-amenities span {
+    font-size: 14px;
+    margin: 0 16px 0 8px;
+}

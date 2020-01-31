@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import { fetchHome } from '../actions';
+import { fetchHome, fetchImage } from '../actions';
 import './HomesShow.css';
 
 import Navbar from '../components/Navbar/Navbar';
@@ -9,7 +9,10 @@ import Preloader from '../components/Preloader/Preloader';
 
 class HomesShow extends Component {
     componentDidMount() {
-        this.props.fetchHome(this.props.match.params.id);
+        const url = this.props.match.params.id;
+
+        this.props.fetchHome(url);
+        this.props.fetchImage(url.slice(5), url)
     };
 
     render() {
@@ -33,6 +36,10 @@ class HomesShow extends Component {
             let phone = homeItem.LOPHONE;
             let email = homeItem.LAEMAIL;
 
+            console.log(this.props.image);
+
+            let image = this.props.image;
+
             return (
                 <>
                 <Helmet>
@@ -42,7 +49,9 @@ class HomesShow extends Component {
                 </Helmet>
                 <Navbar />
                 <div className='container'>
-                    <div className='picture'></div>
+                    <div className='picture'>
+                        <img src={image} />
+                    </div>
                     <div className='content'>
                         <h1>Address</h1>
                         <h2>{locale.location.formatted_address}</h2>
@@ -66,7 +75,10 @@ class HomesShow extends Component {
 };
 
 const mapStateToProps = (state) => {
-    return { homes: state.homes};
+    return {
+        homes: state.homes,
+        image: state.image
+    };
 };
 
-export default connect(mapStateToProps, { fetchHome })(HomesShow);
+export default connect(mapStateToProps, { fetchHome, fetchImage })(HomesShow);

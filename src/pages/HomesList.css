@@ -1,0 +1,13 @@
+.listings-container {
+    display: flex;
+}
+
+.map-area {
+    width: 60%;
+}
+
+.home-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 40%;
+}
