@@ -1,5 +1,11 @@
 .picture {
-    height: 50vh;
+    display: flex;
+    justify-content: center;
+    height: 40vh;
+}
+
+.picture img {
+    height: 100%;
 }
 
 .content {

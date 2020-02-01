@@ -15,9 +15,13 @@ export const fetchHome = (id) => async dispatch => {
 }
 
 export const fetchImage = (folder, id) => async dispatch => {
-    const response = await images.get(`/${folder}/${id}_1.jpg`);
+    const response = await images.get(`/${folder}/${id}.jpg`, {
+        responseType: 'arraybuffer'
+    });
 
-    dispatch({ type: FETCH_IMAGE, payload: response.headers });
+    const imageRes = Buffer.from(response.data, 'binary').toString('base64');
+
+    dispatch({ type: FETCH_IMAGE, payload: imageRes });
 }
 
 export const fetchHomes = (limit) => async dispatch => {

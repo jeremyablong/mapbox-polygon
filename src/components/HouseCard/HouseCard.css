@@ -1,9 +1,11 @@
 .house-card-item {
-    width: 50%;
+    width: calc(50% - 16px);
     display: flex;
     flex-direction: column;
     padding: 16px;
     border: 1px solid rgb(237, 238, 239);
+    border-radius: 5px;
+    margin: 0 16px 16px 0;
 }
 
 .house-card-item svg {

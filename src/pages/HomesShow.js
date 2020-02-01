@@ -38,7 +38,7 @@ class HomesShow extends Component {
 
             console.log(this.props.image);
 
-            let image = this.props.image;
+            let image = `data:image/jpeg;base64,${this.props.image.undefined}`;
 
             return (
                 <>
