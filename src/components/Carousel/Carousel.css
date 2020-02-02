@@ -1,0 +1,6 @@
+.slide img {
+    display: inline-block;
+    margin: auto;
+    min-height: 100%;
+    width: 100%;
+}

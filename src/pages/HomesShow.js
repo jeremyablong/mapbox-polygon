@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import { fetchHome, fetchImage } from '../actions';
+import { fetchHome } from '../actions';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronCircleLeft, faChevronCircleRight } from '@fortawesome/free-solid-svg-icons';
 import './HomesShow.css';
 
 import Navbar from '../components/Navbar/Navbar';
 import Preloader from '../components/Preloader/Preloader';
+import Carousel from '../components/Carousel/Carousel';
 
 class HomesShow extends Component {
     componentDidMount() {
         const url = this.props.match.params.id;
 
         this.props.fetchHome(url);
-        this.props.fetchImage(url.slice(5), url)
     };
 
     render() {
@@ -21,8 +23,10 @@ class HomesShow extends Component {
         if(!homeProp) {
             return <Preloader />;
         } else {
+            let homeProp = this.props.homes.undefined.data;
             let locale = homeProp.location.location.formatted_address;
             let homeItem = homeProp.item;
+            let unitNumber = parseInt(homeItem.UN);
             let listPrice = parseInt(homeItem.LP).toLocaleString(navigator.language, {
                 style: 'currency',
                 currency: 'usd',
@@ -37,10 +41,6 @@ class HomesShow extends Component {
             let phone = homeItem.LOPHONE;
             let email = homeItem.LAEMAIL;
 
-            console.log(this.props.image);
-
-            let image = `data:image/jpeg;base64,${this.props.image.undefined}`;
-
             return (
                 <>
                 <Helmet>
@@ -50,12 +50,16 @@ class HomesShow extends Component {
                 </Helmet>
                 <Navbar />
                 <div className='container'>
-                    <div className='picture'>
-                        <img src={image} />
+                    <div className='carousel'>
+                        <Carousel images={this.props.homes.undefined.imageUrls} />
+                        <div className='carousel-nav'>
+                            <FontAwesomeIcon icon={faChevronCircleLeft} />
+                            <FontAwesomeIcon icon={faChevronCircleRight} />
+                        </div>
                     </div>
                     <div className='content'>
                         <h1>Address</h1>
-                        <h2>{locale}</h2>
+                        <h2>{isNaN(unitNumber) ? locale : locale + ` #${unitNumber}`}</h2>
                         <h1>Price</h1>
                         <h2>{listPrice}</h2>
                         <hr />
@@ -77,9 +81,8 @@ class HomesShow extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        homes: state.homes,
-        image: state.image
+        homes: state.homes
     };
 };
 
-export default connect(mapStateToProps, { fetchHome, fetchImage })(HomesShow);
+export default connect(mapStateToProps, { fetchHome })(HomesShow);

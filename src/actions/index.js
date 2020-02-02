@@ -10,8 +10,14 @@ import {
 
 export const fetchHome = (id) => async dispatch => {
     const response = await listings.get(`/${id}`);
+    const photoCount = response.data.item.PHOTOCOUNT;
+    let imageUrls = ['http://photos.mredllc.com/photos/property/' + id.slice(5) + '/' + id + '.jpg'];
+    for (let i=1; i<photoCount; i++){
+        imageUrls.push('http://photos.mredllc.com/photos/property/' + id.slice(5) + '/' + id + '_' + i + '.jpg');
+    }
+    response.imageUrls = imageUrls;
 
-    dispatch({ type: FETCH_HOME, payload: response.data });
+    dispatch({ type: FETCH_HOME, payload: response });
 }
 
 export const fetchImage = (folder, id) => async dispatch => {

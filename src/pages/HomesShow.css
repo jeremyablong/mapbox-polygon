@@ -1,11 +1,30 @@
-.picture {
-    display: flex;
-    justify-content: center;
-    height: 40vh;
+.carousel {
+    position: relative;
+    height: 80vh;
+    background: green;
 }
 
-.picture img {
+.carousel-nav {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 0 20px;
+    z-index: 1000;
+}
+
+.carousel-nav svg {
+    font-size: 32px;
+    color: #ffffff;
+}
+
+.carousel-nav svg:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 .content {
