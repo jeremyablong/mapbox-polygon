@@ -13,13 +13,30 @@
 
 .main-nav li {
     display: inline;
+    padding: 0 20px;
 }
 
 .navbar-link {
     font-size: 14px;
-    padding: 0 20px;
 }
 
 .navbar-link--active {
     color: red;
+}
+
+.navbar-btn {
+    background: rgba(179,221,242,.5);
+    padding: 10px 20px;
+    border-radius: 6px;
+}
+
+.navbar-btn:hover {
+    background: rgb(179,221,242);
+}
+
+button {
+    background: none;
+    border: none;
+    font-family: inherit;
+    padding: 20px;
 }

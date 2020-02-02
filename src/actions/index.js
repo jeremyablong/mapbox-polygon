@@ -29,7 +29,15 @@ export const fetchHomes = (limit) => async dispatch => {
 
     const listingsData = await Promise.all(
         polyResponse.data.items.map(async data => {
-            let homesResponse = await listings.get(data.item.LN);
+            const ln = data.item.LN;
+            const lnLast3 = ln.slice(ln.length - 3);
+            let homesResponse = await listings.get(ln);
+            const photoCount = homesResponse.data.item.PHOTOCOUNT;
+            let imageUrls = ['http://photos.mredllc.com/photos/property/' + lnLast3 + '/' + ln + '.jpg'];
+            for (let i=1; i<photoCount; i++){
+                imageUrls.push('http://photos.mredllc.com/photos/property/' + lnLast3 + '/' + ln + '_' + i + '.jpg');
+            }
+            homesResponse.imageUrls = imageUrls;
             return homesResponse;
         })
     )

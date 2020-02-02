@@ -1,13 +1,18 @@
 .listings-container {
     display: flex;
+    height: calc(100vh - 80px);
+    background: #f7f7f7;
 }
 
 .map-area {
     width: 60%;
+    background: #9d9d9d;
 }
 
 .home-list {
     display: flex;
     flex-wrap: wrap;
     width: 40%;
+    overflow-y: scroll;
+    padding: 16px 0 0 16px;
 }

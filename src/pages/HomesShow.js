@@ -21,7 +21,7 @@ class HomesShow extends Component {
         if(!homeProp) {
             return <Preloader />;
         } else {
-            let locale = homeProp.location;
+            let locale = homeProp.location.location.formatted_address;
             let homeItem = homeProp.item;
             let listPrice = parseInt(homeItem.LP).toLocaleString(navigator.language, {
                 style: 'currency',
@@ -29,9 +29,10 @@ class HomesShow extends Component {
                 minimumFractionDigits: 0,
                 maximumFractionDigits: 0
             });
-            let bedrooms = homeItem.BRALL;
+            let bedrooms = parseInt(homeItem.BRALL);
             let bathrooms = (parseInt(homeItem.FULL_BATHS_CUSTOM) + parseInt(homeItem.HALF_BATHS));
-            let sqft = homeItem.ASF;
+            let sqft = parseInt(homeItem.ASF);
+            let acres = Number(homeItem.ACR);
             let remarks = homeItem.REMARKS;
             let phone = homeItem.LOPHONE;
             let email = homeItem.LAEMAIL;
@@ -45,7 +46,7 @@ class HomesShow extends Component {
                 <Helmet>
                     <meta charSet='utf=8' />
                     <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
-                    <title>{locale.location.formatted_address} | Shimbly</title>
+                    <title>{locale} | Shimbly</title>
                 </Helmet>
                 <Navbar />
                 <div className='container'>
@@ -54,13 +55,13 @@ class HomesShow extends Component {
                     </div>
                     <div className='content'>
                         <h1>Address</h1>
-                        <h2>{locale.location.formatted_address}</h2>
+                        <h2>{locale}</h2>
                         <h1>Price</h1>
                         <h2>{listPrice}</h2>
                         <hr />
-                        <h2>{`${bedrooms} Beds`}</h2>
-                        <h2>{`${bathrooms} Baths`}</h2>
-                        <h2>{`${sqft} sq ft`}</h2>
+                        <h2>{isNaN(bedrooms) ? '0 Beds' : `${bedrooms} Beds`}</h2>
+                        <h2>{isNaN(bathrooms) ? '0 Baths' : `${bathrooms} Baths`}</h2>
+                        <h2>{isNaN(sqft) ? `${acres} acres` : `${sqft} sqft`}</h2>
                         <hr />
                         <h1>Included</h1>
                         <h2>{remarks}</h2>

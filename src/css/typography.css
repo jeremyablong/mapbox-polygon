@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Karla&display=swap');  /* Header Font - Karla */
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');  /* Body Font - Lato */
+@import url("https://use.typekit.net/zuw4qgd.css");  /* Body Font - Liberation Sans */
 
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'liberation-sans', sans-serif;
     font-size: 16px;
     color: #333333;
 }

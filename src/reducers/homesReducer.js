@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import {
     FETCH_HOME
 } from '../actions/types';

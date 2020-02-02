@@ -6,45 +6,40 @@ const Navbar = () => {
     return (
         <nav className="main-nav container">
             <div className='logo'>
-                <Link to='/' exact>shimbly</Link>
+                <Link to='/'>shimbly</Link>
             </div>
             <div>
-                <li className="one"><NavLink
-                    exact
+                <li><NavLink
                     activeClassName='navbar-link--active'
                     className='navbar-link'
                     to='/learn'
                 >
                     Learn
                 </NavLink></li>
-                <li className="two"><NavLink
-                    exact
+                <li><NavLink
                     activeClassName='navbar-link--active'
                     className='navbar-link'
                     to='/homes'
                 >
                     Buy
                 </NavLink></li>
-                <li className="three"><NavLink
-                    exact
+                <li><NavLink
                     activeClassName='navbar-link--active'
                     className='navbar-link'
                     to='/sell'
                 >
                     Sell
                 </NavLink></li>
-                <li className="four"><NavLink
-                    exact
+                <li><NavLink
                     activeClassName='navbar-link--active'
-                    className='navbar-link'
+                    className='navbar-link navbar-btn'
                     to='/login'
                 >
                     Log In
                 </NavLink></li>
-                <li className="five"><NavLink
-                    exact
+                <li><NavLink
                     activeClassName='navbar-link--active'
-                    className='navbar-link'
+                    className='navbar-link navbar-btn'
                     to='/signup'
                 >
                     Sign Up
