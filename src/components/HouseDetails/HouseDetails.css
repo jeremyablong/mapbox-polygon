@@ -1,0 +1,29 @@
+.content {
+    display: flex;
+    margin: 24px auto;
+    max-width: 1024px;
+}
+
+.details-content-left {
+    padding-right: 20px;
+}
+
+.details-content-right {
+    background: rgba(179,221,242,.5);
+    border: 1px solid rgb(179,221,242);
+    border-radius: 10px;
+    padding: 0 20px;
+}
+
+.details-address {
+    font-size: 22px;
+}
+
+.details-price {
+    margin-bottom: 8px;
+}
+
+.details-contact {
+    font-size: 19px;
+    text-align: center;
+}

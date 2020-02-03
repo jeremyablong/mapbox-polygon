@@ -1,16 +1,24 @@
 import React from 'react';
 import './Carousel.css';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 
-const Carousel = (props) => {
+function renderSlides(props) {
     const imageProp = props.images;
-    
+
     return imageProp.map(image => {
         return (
-            <div className='slide'>
-                <img src={image} />
-            </div>
+            <img src={image} />
         );
     });
 };
 
-export default Carousel;
+const CarouselContainer = (props) => {
+    return (
+        <Carousel infiniteLoop showIndicators={false} showThumbs={false} showStatus={false}>
+            {renderSlides(props)}
+        </Carousel>
+    );
+};
+
+export default CarouselContainer;

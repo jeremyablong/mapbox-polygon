@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { fetchHome } from '../actions';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronCircleLeft, faChevronCircleRight } from '@fortawesome/free-solid-svg-icons';
 import './HomesShow.css';
 
-import Navbar from '../components/Navbar/Navbar';
+import FilterBar from '../components/FilterBar/FilterBar';
 import Preloader from '../components/Preloader/Preloader';
 import Carousel from '../components/Carousel/Carousel';
+import HouseDetails from '../components/HouseDetails/HouseDetails';
 
 class HomesShow extends Component {
     componentDidMount() {
@@ -48,30 +47,20 @@ class HomesShow extends Component {
                     <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
                     <title>{locale} | Shimbly</title>
                 </Helmet>
-                <Navbar />
+                <FilterBar />
                 <div className='container'>
-                    <div className='carousel'>
-                        <Carousel images={this.props.homes.undefined.imageUrls} />
-                        <div className='carousel-nav'>
-                            <FontAwesomeIcon icon={faChevronCircleLeft} />
-                            <FontAwesomeIcon icon={faChevronCircleRight} />
-                        </div>
-                    </div>
-                    <div className='content'>
-                        <h1>Address</h1>
-                        <h2>{isNaN(unitNumber) ? locale : locale + ` #${unitNumber}`}</h2>
-                        <h1>Price</h1>
-                        <h2>{listPrice}</h2>
-                        <hr />
-                        <h2>{isNaN(bedrooms) ? '0 Beds' : `${bedrooms} Beds`}</h2>
-                        <h2>{isNaN(bathrooms) ? '0 Baths' : `${bathrooms} Baths`}</h2>
-                        <h2>{isNaN(sqft) ? `${acres} acres` : `${sqft} sqft`}</h2>
-                        <hr />
-                        <h1>Included</h1>
-                        <h2>{remarks}</h2>
-                        <h3>{`Call/Text: ${phone}`}</h3>
-                        <h3>{`Email: ${email}`}</h3>
-                    </div>
+                    <Carousel images={this.props.homes.undefined.imageUrls} />
+                    <HouseDetails
+                        locale={locale}
+                        unitNumber={unitNumber}
+                        listPrice={listPrice}
+                        bedrooms={isNaN(bedrooms) ? 0 : bedrooms}
+                        bathrooms={isNaN(bathrooms) ? 0 : bathrooms}
+                        sqft={isNaN(sqft) ? `${acres} acres` : `${sqft} sqft`}
+                        remarks={remarks}
+                        phone={phone}
+                        email={email}
+                    />
                 </div>
                 </>
             );

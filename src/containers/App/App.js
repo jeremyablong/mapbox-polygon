@@ -5,6 +5,7 @@ import '../../css/global.css';
 import '../../css/reset.css';
 import '../../css/typography.css';
 
+import Navbar from '../../components/Navbar/Navbar';
 import Index from '../../pages/index';
 import HomesList from '../../pages/HomesList';
 import HomesShow from '../../pages/HomesShow';
@@ -14,6 +15,7 @@ const App = () => {
 		<>
 		<Router history={history}>
 			<div>
+				<Navbar />
 				<Switch>
 					<Route path='/' exact component={Index} />
 					<Route path='/homes' exact component={HomesList} />

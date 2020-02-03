@@ -1,6 +1,17 @@
+.carousel {
+    max-width: 1024px !important;
+    margin: auto !important;
+}
+
+.slide {
+    height: 60vh;
+}
+
 .slide img {
-    display: inline-block;
-    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-15%);
     min-height: 100%;
     width: 100%;
 }

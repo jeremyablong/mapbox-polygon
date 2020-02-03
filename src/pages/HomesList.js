@@ -5,7 +5,6 @@ import { fetchHomes } from '../actions';
 
 import './HomesList.css';
 
-import Navbar from '../components/Navbar/Navbar';
 import HouseCard from '../components/HouseCard/HouseCard';
 import Preloader from '../components/Preloader/Preloader';
 
@@ -74,7 +73,6 @@ class HomesList extends Component {
                     <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
                     <title>Shimbly | Search Homes</title>
                 </Helmet>
-                <Navbar />
                     <div className='listings-container'>
                         <div className='map-area'></div>
                         <div className='home-list'>
