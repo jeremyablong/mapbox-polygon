@@ -14,7 +14,8 @@ const HouseCard = (props) => {
                 <img src={props.image} />
             </div>
             <div className='listing-content'>
-                <div className='address'>{props.address}</div>
+                <div className='street'>{isNaN(props.unitNumber) ? `${props.streetNumber} ${props.route}` : `${props.streetNumber} ${props.route} #${props.unitNumber}`}</div>
+                <div className='address'>{`${props.city}, ${props.state} ${props.zipcode}`}</div>
                 <div className='list-price'><FontAwesomeIcon icon={faTag} /><span>{props.price}</span></div>
                 <div className='home-amenities'>
                     <p><FontAwesomeIcon icon={faBed} /><span>{props.bedrooms}</span></p>

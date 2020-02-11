@@ -1,10 +1,10 @@
 import {
-    FETCH_IMAGE
+    FETCH_LISTINGS
 } from '../actions/types';
 
 export default (state = {}, action) => {
     switch (action.type) {
-        case FETCH_IMAGE:
+        case FETCH_LISTINGS:
             return { ...state, [action.payload.id]: action.payload };
         default:
             return state;

@@ -1,0 +1,6 @@
+.home-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 16px 0 0 16px;
+    margin-bottom: 50px;
+}

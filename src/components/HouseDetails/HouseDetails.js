@@ -7,8 +7,9 @@ const HouseDetails = (props) => {
     return (
         <div className='content'>
             <div className='details-content-left'>
-                <div className='details-address'>{isNaN(props.unitNumber) ? props.locale : props.locale + ` #${props.unitNumber}`}</div>
+                <div className='details-street'>{isNaN(props.unitNumber) ? `${props.streetNumber} ${props.route}` : `${props.streetNumber} ${props.route} #${props.unitNumber}`}</div>
                 <div className='details-price'>{props.listPrice}</div>
+                <div className='details-location'>{`${props.city}, ${props.state} ${props.zipcode}`}</div>
                 <div className='home-amenities'>
                     <p><FontAwesomeIcon icon={faBed} /><span>{`${props.bedrooms} Beds`}</span></p>
                     <p><FontAwesomeIcon icon={faBath} /><span>{`${props.bathrooms} Baths`}</span></p>

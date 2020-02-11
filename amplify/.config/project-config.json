@@ -1,0 +1,15 @@
+{
+	"projectName": "shimbly-portal",
+	"version": "3.0",
+	"frontend": "javascript",
+	"javascript": {
+		"framework": "react",
+		"config": {
+			"SourceDir": "src",
+			"DistributionDir": "out",
+			"BuildCommand": "npm run-script export",
+			"StartCommand": "npm run-script start"
+		}
+	},
+	"providers": ["awscloudformation"]
+}

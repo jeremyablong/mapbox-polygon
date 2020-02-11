@@ -1,0 +1,125 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "amplify-portal-test-232255-authRole",
+			"UnauthRoleArn": "arn:aws:iam::574411154021:role/amplify-portal-test-232255-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::574411154021:role/amplify-portal-test-232255-authRole",
+			"Region": "us-east-2",
+			"DeploymentBucketName": "amplify-portal-test-232255-deployment",
+			"UnauthRoleName": "amplify-portal-test-232255-unauthRole",
+			"StackName": "amplify-portal-test-232255",
+			"StackId": "arn:aws:cloudformation:us-east-2:574411154021:stack/amplify-portal-test-232255/15f5fea0-33bd-11ea-ba6d-0a6c486e9f90",
+			"AmplifyAppId": "d371ha7vgev9ya"
+		}
+	},
+	"hosting": {
+		"S3AndCloudFront": {
+			"service": "S3AndCloudFront",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-portal-test-232255-deployment/amplify-cfn-templates/hosting/template.json",
+				"logicalId": "hostingS3AndCloudFront"
+			},
+			"lastPushTimeStamp": "2020-02-06T10:01:56.233Z",
+			"output": {
+				"S3BucketSecureURL": "https://portal-20200110232951-hostingbucket-test.s3.amazonaws.com",
+				"WebsiteURL": "http://portal-20200110232951-hostingbucket-test.s3-website.us-east-2.amazonaws.com",
+				"Region": "us-east-2",
+				"HostingBucketName": "portal-20200110232951-hostingbucket-test",
+				"CloudFrontSecureURL": "https://d3mo9sl8bmsfzr.cloudfront.net",
+				"CloudFrontOriginAccessIdentity": "E3IX5FCP5FTOCY",
+				"CloudFrontDistributionID": "E1TQ6NGNGUKB3K",
+				"CloudFrontDomainName": "d3mo9sl8bmsfzr.cloudfront.net"
+			},
+			"lastPushDirHash": "0Rq+UgA3uFVcU96TIYxAchcK/uw="
+		}
+	},
+	"auth": {
+		"shimblyportal097db43b": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "shimblyportal097db43bPreSignup",
+					"triggerProvider": "Cognito",
+					"attributes": [
+						"Arn",
+						"Name"
+					]
+				},
+				{
+					"category": "function",
+					"resourceName": "shimblyportal097db43bPostConfirmation",
+					"triggerProvider": "Cognito",
+					"attributes": [
+						"Arn",
+						"Name"
+					]
+				}
+			],
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-portal-test-232255-deployment/amplify-cfn-templates/auth/shimblyportal097db43b-cloudformation-template.yml",
+				"logicalId": "authshimblyportal097db43b"
+			},
+			"lastPushTimeStamp": "2020-02-06T10:01:56.230Z",
+			"output": {
+				"AppClientSecret": "d2jokeedh1n28na5hhd6b2h0bp0hulpdvbp50s7hoefnff3k1gh",
+				"UserPoolId": "us-east-2_dbRGQxY32",
+				"AppClientIDWeb": "198ivfc01ie4ackufbfb494gss",
+				"AppClientID": "1k42veufq0293nrr227uanqe3l",
+				"HostedUIDomain": "shimblyportal097db43b-097db43b-test",
+				"IdentityPoolId": "us-east-2:76b35bfe-03d2-4671-815c-e9d0a800f946",
+				"IdentityPoolName": "shimbly_portaldf00333e_identitypool_df00333e__test",
+				"OAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://d3mo9sl8bmsfzr.cloudfront.net/index\"],\"LogoutURLs\":[\"https://d3mo9sl8bmsfzr.cloudfront.net/index\"]}",
+				"UserPoolName": "shimblyportal097db43b_userpool_097db43b",
+				"GoogleWebClient": "625926953921-a8tjk88aq29h1l4dtr77aeecnlijf2th.apps.googleusercontent.com",
+				"FacebookWebClient": "205145993534618"
+			},
+			"lastPushDirHash": "aaKp46Jk58/tI9pg5sqLjPdLPHU="
+		}
+	},
+	"function": {
+		"shimblyportal097db43bPreSignup": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"lastBuildTimeStamp": "2020-01-28T23:30:43.471Z",
+			"lastPackageTimeStamp": "2020-01-29T13:54:46.438Z",
+			"distZipFilename": "shimblyportal097db43bPreSignup-6d377158666c74395830-build.zip",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-portal-test-232255-deployment/amplify-cfn-templates/function/shimblyportal097db43bPreSignup-cloudformation-template.json",
+				"logicalId": "functionshimblyportal097db43bPreSignup"
+			},
+			"lastPushTimeStamp": "2020-02-06T10:01:56.230Z",
+			"output": {
+				"Region": "us-east-2",
+				"Arn": "arn:aws:lambda:us-east-2:574411154021:function:shimblyportal097db43bPreSignup-test",
+				"Name": "shimblyportal097db43bPreSignup-test",
+				"LambdaExecutionRole": "shimblyportal097db43bPreSignup-test"
+			},
+			"lastPushDirHash": "gWnrGnKdD2fN3sYpKat1XTR53/I=",
+			"dependsOn": []
+		},
+		"shimblyportal097db43bPostConfirmation": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"lastBuildTimeStamp": "2020-01-29T10:59:42.568Z",
+			"lastPackageTimeStamp": "2020-01-29T22:44:24.084Z",
+			"distZipFilename": "shimblyportal097db43bPostConfirmation-69304a49416a48593442-build.zip",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-portal-test-232255-deployment/amplify-cfn-templates/function/shimblyportal097db43bPostConfirmation-cloudformation-template.json",
+				"logicalId": "functionshimblyportal097db43bPostConfirmation"
+			},
+			"lastPushTimeStamp": "2020-02-06T10:01:56.231Z",
+			"output": {
+				"Region": "us-east-2",
+				"Arn": "arn:aws:lambda:us-east-2:574411154021:function:shimblyportal097db43bPostConfirmation-test",
+				"Name": "shimblyportal097db43bPostConfirmation-test",
+				"LambdaExecutionRole": "shimblyportal097db43bPostConfirmation-test"
+			},
+			"lastPushDirHash": "F9paqkGxiNlh+qoTJ5F0ULmpiao="
+		}
+	}
+}

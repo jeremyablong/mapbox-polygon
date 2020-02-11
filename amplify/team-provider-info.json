@@ -1,0 +1,29 @@
+{
+    "test": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-portal-test-232255-authRole",
+            "UnauthRoleArn": "arn:aws:iam::574411154021:role/amplify-portal-test-232255-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::574411154021:role/amplify-portal-test-232255-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "amplify-portal-test-232255-deployment",
+            "UnauthRoleName": "amplify-portal-test-232255-unauthRole",
+            "StackName": "amplify-portal-test-232255",
+            "StackId": "arn:aws:cloudformation:us-east-2:574411154021:stack/amplify-portal-test-232255/15f5fea0-33bd-11ea-ba6d-0a6c486e9f90",
+            "AmplifyAppId": "d371ha7vgev9ya"
+        },
+        "categories": {
+            "function": {
+                "shimblyportal5169e4baPreSignup": {},
+                "shimblyportal097db43bPreSignup": {},
+                "shimblyportal097db43bPostConfirmation": {}
+            },
+            "auth": {
+                "shimblyportal097db43b": {
+                    "facebookAppId": "205145993534618",
+                    "googleClientId": "625926953921-a8tjk88aq29h1l4dtr77aeecnlijf2th.apps.googleusercontent.com",
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Facebook\",\"client_id\":\"205145993534618\",\"client_secret\":\"92551851056b3da319818b4812afe38a\"},{\"ProviderName\":\"Google\",\"client_id\":\"625926953921-a8tjk88aq29h1l4dtr77aeecnlijf2th.apps.googleusercontent.com\",\"client_secret\":\"l8Oo_3JauV3FcPwm7URy98gY\"}]"
+                }
+            }
+        }
+    }
+}

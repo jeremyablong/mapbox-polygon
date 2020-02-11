@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import NavAuth from './NavAuth';
 import './Navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -36,20 +37,7 @@ const Navbar = () => {
                 >
                     Sell
                 </NavLink></li>
-                <li><NavLink
-                    activeClassName='navbar-link--active'
-                    className='navbar-link navbar-btn'
-                    to='/login'
-                >
-                    Log In
-                </NavLink></li>
-                <li><NavLink
-                    activeClassName='navbar-link--active'
-                    className='navbar-link navbar-btn'
-                    to='/signup'
-                >
-                    Sign Up
-                </NavLink></li>
+                <NavAuth />
             </div>
         </nav>
     );

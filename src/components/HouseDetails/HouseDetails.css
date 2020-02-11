@@ -1,26 +1,36 @@
 .content {
     display: flex;
-    margin: 24px auto;
+    width: 100%;
+    margin: 0px auto 24px auto;
     max-width: 1024px;
 }
 
 .details-content-left {
-    padding-right: 20px;
+    font-size: 20px;
+    width: 65%;
+    padding: 20px 20px 20px 0px;
 }
 
 .details-content-right {
-    background: rgba(179,221,242,.5);
-    border: 1px solid rgb(179,221,242);
-    border-radius: 10px;
-    padding: 0 20px;
+    width: 35%;
+    background: #f7f7f7;
+    padding: 20px;
 }
 
-.details-address {
+.details-street {
     font-size: 22px;
 }
 
 .details-price {
+    font-size: 20px;
+}
+
+.details-location {
     margin-bottom: 8px;
+}
+
+.details-remarks {
+    font-size: 16px;
 }
 
 .details-contact {

@@ -4,15 +4,12 @@
     background: #f7f7f7;
 }
 
+.listings-area {
+    overflow-y: scroll;
+    width: 40%;
+}
+
 .map-area {
     width: 60%;
     background: #9d9d9d;
-}
-
-.home-list {
-    display: flex;
-    flex-wrap: wrap;
-    width: 40%;
-    overflow-y: scroll;
-    padding: 16px 0 0 16px;
 }

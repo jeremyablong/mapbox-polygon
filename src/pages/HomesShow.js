@@ -16,14 +16,31 @@ class HomesShow extends Component {
         this.props.fetchHome(url);
     };
 
+    addressFilter(value) {
+        const location = this.props.homes.undefined.data.location.location.address_components;
+
+        for(let i = 0; i < location.length; i++){
+            if(location[i].types.length > 1){
+                for(let j = 0; j < location[i].types.length; j++){
+                    if(location[i].types[j] == value){
+                        return location[i];
+                    }
+                };
+            } else {
+                if(location[i].types == value){
+                    return location[i];
+                }
+            }
+        }
+    }
+
     render() {
         const homeProp = this.props.homes.undefined;
-
+        
         if(!homeProp) {
             return <Preloader />;
         } else {
             let homeProp = this.props.homes.undefined.data;
-            let locale = homeProp.location.location.formatted_address;
             let homeItem = homeProp.item;
             let unitNumber = parseInt(homeItem.UN);
             let listPrice = parseInt(homeItem.LP).toLocaleString(navigator.language, {
@@ -32,7 +49,7 @@ class HomesShow extends Component {
                 minimumFractionDigits: 0,
                 maximumFractionDigits: 0
             });
-            let bedrooms = parseInt(homeItem.BRALL);
+            let bedrooms = parseInt(homeItem.BR_CUSTOM);
             let bathrooms = (parseInt(homeItem.FULL_BATHS_CUSTOM) + parseInt(homeItem.HALF_BATHS));
             let sqft = parseInt(homeItem.ASF);
             let acres = Number(homeItem.ACR);
@@ -40,18 +57,28 @@ class HomesShow extends Component {
             let phone = homeItem.LOPHONE;
             let email = homeItem.LAEMAIL;
 
+            let streetNumber = (this.addressFilter('street_number')).short_name;
+            let route = (this.addressFilter('route')).short_name;
+            let city = (this.addressFilter('locality')).short_name;
+            let state = (this.addressFilter('administrative_area_level_1')).short_name;
+            let zipcode = (this.addressFilter('postal_code')).short_name;
+
             return (
                 <>
                 <Helmet>
                     <meta charSet='utf=8' />
                     <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
-                    <title>{locale} | Shimbly</title>
+                    <title>{`${streetNumber} ${route} #${unitNumber}, ${city}, ${state} ${zipcode}`} | Shimbly</title>
                 </Helmet>
                 <FilterBar />
                 <div className='container'>
                     <Carousel images={this.props.homes.undefined.imageUrls} />
                     <HouseDetails
-                        locale={locale}
+                        streetNumber={streetNumber}
+                        route={route}
+                        city={city}
+                        state={state}
+                        zipcode={zipcode}
                         unitNumber={unitNumber}
                         listPrice={listPrice}
                         bedrooms={isNaN(bedrooms) ? 0 : bedrooms}

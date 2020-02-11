@@ -1,0 +1,62 @@
+{
+	"identityPoolName": "shimbly_portaldf00333e_identitypool_df00333e",
+	"allowUnauthenticatedIdentities": false,
+	"resourceNameTruncated": "shimbl097db43b",
+	"userPoolName": "shimblyportal097db43b_userpool_097db43b",
+	"autoVerifiedAttributes": ["email"],
+	"mfaConfiguration": "OFF",
+	"mfaTypes": ["SMS Text Message"],
+	"smsAuthenticationMessage": "Your authentication code is {####}",
+	"smsVerificationMessage": "Your verification code is {####}",
+	"emailVerificationSubject": "Your verification code",
+	"emailVerificationMessage": "Your verification code is {####}",
+	"defaultPasswordPolicy": false,
+	"passwordPolicyMinLength": 8,
+	"passwordPolicyCharacters": [],
+	"requiredAttributes": ["email", "name"],
+	"userpoolClientGenerateSecret": true,
+	"userpoolClientRefreshTokenValidity": 30,
+	"userpoolClientWriteAttributes": ["email"],
+	"userpoolClientReadAttributes": ["email"],
+	"userpoolClientLambdaRole": "shimbl097db43b_userpoolclient_lambda_role",
+	"userpoolClientSetAttributes": false,
+	"resourceName": "shimblyportal097db43b",
+	"authSelections": "identityPoolAndUserPool",
+	"authRoleArn": {
+		"Fn::GetAtt": ["AuthRole", "Arn"]
+	},
+	"unauthRoleArn": {
+		"Fn::GetAtt": ["UnauthRole", "Arn"]
+	},
+	"useDefault": "manual",
+	"hostedUI": true,
+	"usernameAttributes": ["email"],
+	"triggers": "{\"PostConfirmation\":[\"custom\"],\"PreSignup\":[\"custom\"]}",
+	"hostedUIDomainName": "shimblyportal097db43b-097db43b",
+	"authProvidersUserPool": ["Facebook", "Google"],
+	"hostedUIProviderMeta": "[{\"ProviderName\":\"Facebook\",\"authorize_scopes\":\"email,public_profile\",\"AttributeMapping\":{\"email\":\"email\",\"name\":\"name\",\"username\":\"id\"}},{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"name\":\"name\",\"username\":\"sub\"}}]",
+	"userPoolGroupList": [],
+	"parentStack": {
+		"Ref": "AWS::StackId"
+	},
+	"permissions": [],
+	"dependsOn": [
+		{
+			"category": "function",
+			"resourceName": "shimblyportal097db43bPreSignup",
+			"triggerProvider": "Cognito",
+			"attributes": ["Arn", "Name"]
+		},
+		{
+			"category": "function",
+			"resourceName": "shimblyportal097db43bPostConfirmation",
+			"triggerProvider": "Cognito",
+			"attributes": ["Arn", "Name"]
+		}
+	],
+	"userPoolGroups": false,
+	"adminQueries": false,
+	"thirdPartyAuth": true,
+	"authProviders": ["graph.facebook.com", "accounts.google.com"],
+	"oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://d3mo9sl8bmsfzr.cloudfront.net/index\"],\"LogoutURLs\":[\"https://d3mo9sl8bmsfzr.cloudfront.net/index\"]}"
+}
