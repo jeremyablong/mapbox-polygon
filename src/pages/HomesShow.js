@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { fetchHome } from '../actions';
-import './HomesShow.css';
 
 import FilterBar from '../components/FilterBar/FilterBar';
 import Preloader from '../components/Preloader/Preloader';

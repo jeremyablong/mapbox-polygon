@@ -27,6 +27,7 @@ function renderList(props) {
         let url = home.config.url;
         let locale = home.data.location.location.formatted_address;
         let homeItem = home.data.item;
+        let ln = homeItem.LN;
         let unitNumber = parseInt(homeItem.UN);
         let listPrice = parseInt(homeItem.LP).toLocaleString(navigator.language, {
             style: 'currency',
@@ -49,6 +50,7 @@ function renderList(props) {
 
         return (
             <HouseCard
+                ln={ln}
                 streetNumber={streetNumber}
                 route={route}
                 city={city}

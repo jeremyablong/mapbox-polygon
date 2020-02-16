@@ -1,7 +1,8 @@
 .listings-container {
     display: flex;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 74.75px);
     background: #f7f7f7;
+    margin-top: -1rem;
 }
 
 .listings-area {

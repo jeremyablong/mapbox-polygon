@@ -1,9 +1,7 @@
 import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import history from '../../history';
-import '../../css/global.css';
-import '../../css/reset.css';
-import '../../css/typography.css';
+import '../../semantic/dist/semantic.min.css';
 
 import Navbar from '../../components/Navbar/Navbar';
 import Index from '../../pages/index';

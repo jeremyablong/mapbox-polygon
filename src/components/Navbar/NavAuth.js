@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import Amplify, { Auth, Hub } from 'aws-amplify';
 import aws_exports from '../../aws-exports';
 
 Amplify.configure(aws_exports);
 
 class NavAuth extends Component {
-    state = { user: null, customState: null };
+  state = { user: null };
 
   componentDidMount() {
     Hub.listen("auth", ({ payload: { event, data } }) => {
@@ -17,47 +16,48 @@ class NavAuth extends Component {
         case "signOut":
           this.setState({ user: null });
           break;
-        case "customOAuthState":
-          this.setState({ customState: data });
+        default:
+          Auth.currentAuthenticatedUser().then(user => {
+            console.log(user);
+            this.setState({ user });
+          }).catch(e => {
+            console.log(e);
+          });
       }
     });
-
-    Auth.currentAuthenticatedUser()
-      .then(user => this.setState({ user }))
-      .catch(() => console.log("Not signed in"));
   }
 
-    render() {
-        const { user } = this.state;
+  render() {
+    const { user } = this.state;
 
-        return (
-            <li>
-				{!user && (
-					<a
-                        className='navbar-link navbar-btn'
-                        onClick={() => {
-                            Auth.federatedSignIn();
-                        }}
-                    >
-                        Log In
+    return (
+      <div className="item">
+        {!user && (
+          <a
+            className='ui inverted blue button'
+            onClick={() => {
+              Auth.federatedSignIn();
+            }}
+          >
+            Log In
                     </a>
-				)}
+        )}
 
-				{user && user.attributes && (
-					<a
-                        className='navbar-link navbar-btn'
-                        onClick={() => {
-                            Auth.signOut().catch((error) => {
-                                console.log('=== signOut error:', error);
-                            });
-                        }}
-                    >
-                        Log Out {user.attributes.name || user.attributes.email}
-                    </a>
-				)}
-			</li>
-        );
-    };
+        {user && user.attributes && (
+          <a
+            className='ui inverted blue button'
+            onClick={() => {
+              Auth.signOut().catch((error) => {
+                console.log('=== signOut error:', error);
+              });
+            }}
+          >
+            Log Out {user.attributes.name || user.attributes.email}
+          </a>
+        )}
+      </div>
+    );
+  };
 };
 
 export default NavAuth;

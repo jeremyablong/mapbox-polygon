@@ -2,42 +2,44 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import NavAuth from './NavAuth';
 import './Navbar.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
     return (
-        <nav className="main-nav container">
-            <div className='logo'>
-                <Link to='/'>shimbly</Link>
-                <form className='search-container'>
-                    <input type='text' className='search-bar' placeholder='Search an address, neighborhood, city, or ZIP code' />
-                    <FontAwesomeIcon icon={faSearch} />
-                </form>
-            </div>
-            <div>
-                <li><NavLink
-                    activeClassName='navbar-link--active'
-                    className='navbar-link'
-                    to='/learn'
-                >
-                    Learn
-                </NavLink></li>
-                <li><NavLink
-                    activeClassName='navbar-link--active'
-                    className='navbar-link'
-                    to='/homes'
-                >
-                    Buy
-                </NavLink></li>
-                <li><NavLink
-                    activeClassName='navbar-link--active'
-                    className='navbar-link'
-                    to='/sell'
-                >
-                    Sell
-                </NavLink></li>
-                <NavAuth />
+        <nav className="ui large borderless menu">
+            <div className="ui container">
+                <div className="left menu">
+                    <Link
+                        className="ui header large item"
+                        to="/">shimbly
+                    </Link>
+                    <div className="item">
+                        <form className="ui icon input">
+                            <input type="text" placeholder="Search an address, neighborhood, city, or ZIP code" />
+                            <i className="search link icon"></i>
+                        </form>
+                    </div>
+                </div>
+                <div className="right menu">
+                    <NavLink
+                        className='disabled item'
+                        to='/learn'
+                    >
+                        Learn
+                    </NavLink>
+                    <NavLink
+                        className='item'
+                        to='/homes'
+                    >
+                        Buy
+                    </NavLink>
+                    <NavLink
+                        className='disabled item'
+                        to='/sell'
+                    >
+                        Sell
+                    </NavLink>
+                    <NavAuth />
+                </div>
             </div>
         </nav>
     );

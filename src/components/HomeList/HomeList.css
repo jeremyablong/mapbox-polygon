@@ -4,3 +4,7 @@
     padding: 16px 0 0 16px;
     margin-bottom: 50px;
 }
+
+.home-list a {
+    color: rgba(0,0,0,.87);
+}
