@@ -12,6 +12,7 @@
 
 .pagination-nav ul {
     display: flex;
+    list-style-type: none !important;
 }
 
 .pagination-nav li {

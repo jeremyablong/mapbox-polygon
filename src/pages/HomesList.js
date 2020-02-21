@@ -10,10 +10,36 @@ import Pagination from '../components/Pagination/Pagination';
 import Preloader from '../components/Preloader/Preloader';
 
 class HomesList extends Component {
-    componentDidMount() {
-        const limit = 24;
+    state = {
+        limit: 24,
+        currentPage: 1
+    }
 
-        this.props.fetchHomes(limit);
+    toNextPage = () => {
+        if(this.state.currentPage !== this.props.list.undefined.totalPages) {
+            this.setState({ currentPage: this.state.currentPage + 1 });
+        }
+    }
+
+    toPrevPage = () => {
+        if(this.state.currentPage > 1) {
+            this.setState({ currentPage: this.state.currentPage - 1 });
+        }
+    }
+
+    updateData = () => {
+        const currentPage = this.state.currentPage;
+        const limit = this.state.limit;
+
+        this.props.fetchHomes(currentPage, limit);
+    }
+
+    componentDidMount() {
+        this.updateData();
+    }
+
+    componentDidUpdate() {
+        this.updateData();
     }
 
     render() {
@@ -36,6 +62,10 @@ class HomesList extends Component {
                             <Pagination
                                 totalItems={listProp.totalItems}
                                 totalPages={listProp.totalPages}
+                                start={listProp.start}
+                                end={listProp.end}
+                                next={this.toNextPage}
+                                prev={this.toPrevPage}
                             />
                         </div>
                     </div>

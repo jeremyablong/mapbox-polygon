@@ -1,40 +1,91 @@
-/*.content {
-    display: flex;
-    width: 100%;
-    margin: 0px auto 24px auto;
-    max-width: 1024px;
-}
-
-.details-content-left {
-    font-size: 20px;
-    width: 65%;
-    padding: 20px 20px 20px 0px;
-}
-
-.details-content-right {
-    width: 35%;
-    background: #f7f7f7;
-    padding: 20px;
-}
-
-.details-street {
+.details-header {
     font-size: 22px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.list-header {
+    font-size: 16px;
+    margin-bottom: 14px;
+}
+
+.list-column {
+    margin-bottom: 14px;
+}
+
+.list-column-detailed {
+    margin-bottom: 14px;
+}
+
+.list-column li {
+    display: inline-block;
+}
+
+.list-column li:first-child {
+    width: 32%;
+    font-weight: 700;
+}
+
+.list-item {
+    margin-bottom: 14px;
+}
+
+.details-address {
+    font-size: 22px;
+    margin-bottom: 12px;
 }
 
 .details-price {
     font-size: 20px;
+    margin-bottom: 8px;
 }
 
 .details-location {
-    margin-bottom: 8px;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.details-amenities {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.details-amenities span {
+    font-size: 18px;
+    margin: 0 16px 0 8px;
+}
+
+.details-amenities svg {
+    font-size: 18px;
 }
 
 .details-remarks {
     font-size: 16px;
 }
 
+.contact {
+    padding: 0 !important;
+}
+
+.contact-inner {
+    background: #f7f7f7;
+    padding: 14px;
+}
+
 .details-contact {
-    font-size: 19px;
+    font-size: 22px;
+    margin-bottom: 20px;
     text-align: center;
 }
-*/
+
+.details-email {
+    text-align: center;
+}
+
+.details-phone {
+    text-align: center;
+}
+
+.ui.form {
+    margin-bottom: 20px;
+}

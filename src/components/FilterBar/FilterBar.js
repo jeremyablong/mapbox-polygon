@@ -6,19 +6,29 @@ import './FilterBar.css'
 
 const FilterBar = () => {
     return (
-        <div className='filter-bar container'>
-            <Link to='/homes'>
-            <button className='back-btn'>
-                <FontAwesomeIcon icon={faChevronLeft} />
-                <span>Back To Search</span>
-            </button>
-            </Link>
-            <span>|</span>
-            <div className='home-content-nav'>
-                <a>Overview</a>
-                <a>Property Details</a>
-                <a>Location</a>
-                <a>Similar Homes</a>
+        <div className='ui secondary menu'>
+            <div className='ui container'>
+                <div className='item'>
+                    <Link to='/homes'>
+                    <button className='ui inverted button blue'>
+                        <FontAwesomeIcon icon={faChevronLeft} />
+                        <span>Back To Search</span>
+                    </button>
+                    </Link>
+                </div>
+                <span className='item'>|</span>
+                <div className='item'>
+                    <div>Overview</div>
+                </div>
+                <div className='item'>
+                    <div>Property Details</div>
+                </div>
+                <div className='item'>
+                    <div>Location</div>
+                </div>
+                <div className='item'>
+                    <div>Similar Homes</div>
+                </div>
             </div>
         </div>
     );

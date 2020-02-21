@@ -40,7 +40,7 @@ class NavAuth extends Component {
             }}
           >
             Log In
-                    </a>
+          </a>
         )}
 
         {user && user.attributes && (

@@ -7,12 +7,11 @@ import {
     FETCH_LISTINGS
 } from './types';
 
-async function fetchData(limit) {
+async function fetchData() {
     const response = await polygon.get('/qps', {
         params: {
             polygon: '-88.774948,42.458859;-86.432490,42.458859;-86.432490,41.081374;-88.774948,41.081374',
-            proptype: 'condominium',
-            limit: limit
+            proptype: 'condominium'
         }
     });
 
@@ -37,11 +36,15 @@ export const fetchHome = (id) => async dispatch => {
     dispatch({ type: FETCH_HOME, payload: response });
 }
 
-export const fetchHomes = (limit) => async dispatch => {
+export const fetchHomes = (currentPage, limit) => async dispatch => {
     const response = await fetchData();
     const totalItems = response.data.items.length;
     const totalPages = Math.ceil(totalItems / limit);
-    const polyResponse = response.data.items.slice(0, limit)
+
+    const indexOfLastPost = currentPage * limit;
+    const indexOfFirstPost = indexOfLastPost - limit;
+
+    const polyResponse = response.data.items.slice(indexOfFirstPost, indexOfLastPost);
 
     const listingsData = await Promise.all(
         polyResponse.map(async data => {
@@ -59,6 +62,8 @@ export const fetchHomes = (limit) => async dispatch => {
     )
     listingsData.totalItems = totalItems;
     listingsData.totalPages = totalPages;
+    listingsData.start = indexOfFirstPost;
+    listingsData.end = indexOfLastPost;
 
     dispatch({ type: FETCH_HOMES, payload: listingsData });
 }

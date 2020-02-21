@@ -7,10 +7,10 @@
 
 .listings-area {
     overflow-y: scroll;
-    width: 40%;
+    width: 40vw;
 }
 
 .map-area {
-    width: 60%;
+    width: 60vw;
     background: #9d9d9d;
 }

@@ -6,18 +6,22 @@ import { Carousel } from 'react-responsive-carousel';
 function renderSlides(props) {
     const imageProp = props.images;
 
-    return imageProp.map(image => {
+    console.log(imageProp)
+
+    return imageProp.map((image, index) => {
         return (
-            <img src={image} />
+            <img src={image} key={index} alt={index} />
         );
     });
 };
 
 const CarouselContainer = (props) => {
     return (
-        <Carousel infiniteLoop showIndicators={false} showThumbs={false} showStatus={false}>
-            {renderSlides(props)}
-        </Carousel>
+        <div className='ui container'>
+            <Carousel infiniteLoop showIndicators={false} showThumbs={false} showStatus={false}>
+                {renderSlides(props)}
+            </Carousel>
+        </div>
     );
 };
 

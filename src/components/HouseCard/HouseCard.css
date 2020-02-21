@@ -41,7 +41,6 @@
 .home-amenities {
     display: flex;
     margin-top: auto;
-    align-items: flex-end;
 }
 
 .home-amenities span {
