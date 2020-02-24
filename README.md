@@ -1,8 +1,6 @@
 # Shimbly
 
-
 ## If you would like information on project structure, please scroll down
-
 
 ## Before running `npm start`
 
@@ -71,7 +69,6 @@ Project is done using **React.js** and **Redux**.
 
 CSS framework used is Semantic UI.
 
-
 To avoid future confusion, please be aware of how React and Redux work together. Semantic UI link below as well.
 
 **React** - (https://reactjs.org/docs/getting-started.html)
@@ -80,9 +77,7 @@ To avoid future confusion, please be aware of how React and Redux work together.
 
 **Semantic UI** - (https://semantic-ui.com/introduction/getting-started.html)
 
-
 All files have comments on how they work or why they are there too.
-
 
 Folders are structured as follows:
 
