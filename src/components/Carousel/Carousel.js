@@ -3,10 +3,10 @@ import './Carousel.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
+// Check out react-responsive-carousel npm for info on customizing Carousel
+
 function renderSlides(props) {
     const imageProp = props.images;
-
-    console.log(imageProp)
 
     return imageProp.map((image, index) => {
         return (

@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import placeholder from '../../assets/houseplaceholder.jpg';
-
 import './HouseCard.css'
+
+// Renders card components for all listings grid
 
 const HouseCard = (props) => {
     return (
         <Link className='house-card-item' to={`/homes/details/${props.link}`}>
             <div className='house-image'>
-                <img src={props.image} />
+                <img src={props.image} alt={props.image} />
             </div>
             <div className='content listing-content'>
                 <div className='description street'>{isNaN(props.unitNumber) ? `${props.streetNumber} ${props.route}` : `${props.streetNumber} ${props.route} #${props.unitNumber}`}</div>

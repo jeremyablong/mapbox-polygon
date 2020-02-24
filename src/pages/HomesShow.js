@@ -3,18 +3,23 @@ import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { fetchHome } from '../actions';
 
+import Navbar from '../components/Navbar/Navbar';
 import FilterBar from '../components/FilterBar/FilterBar';
 import Preloader from '../components/Preloader/Preloader';
 import Carousel from '../components/Carousel/Carousel';
 import HouseDetails from '../components/HouseDetails/HouseDetails';
 
+// Single home listing
+
 class HomesShow extends Component {
+    // Fetchs state on component mouting
     componentDidMount() {
         const url = this.props.match.params.id;
 
         this.props.fetchHome(url);
     };
 
+    // Loops to find specific address data from API
     addressFilter(value) {
         const location = this.props.homes.undefined.data.location.location.address_components;
 
@@ -34,7 +39,7 @@ class HomesShow extends Component {
     }
 
     render() {
-        const homeProp = this.props.homes.undefined;
+        const homeProp = this.props.homes.undefined;  // Global const for shorthand of other variables
         
         if(!homeProp) {
             return <Preloader />;
@@ -59,6 +64,7 @@ class HomesShow extends Component {
             let email = homeItem.LAEMAIL;
             let parking= homeItem.PKN;
 
+            // ADDRESS CONTENT
             let streetNumber = (this.addressFilter('street_number')).short_name;
             let route = (this.addressFilter('route')).short_name;
             let city = (this.addressFilter('locality')).short_name;
@@ -124,7 +130,7 @@ class HomesShow extends Component {
             let amenities = homeItem.CAA;
             let assoAmentities = homeItem.MAI;
 
-
+            //// ALL DATA HAS BEEN PASSED AS PROPS TO HOUSEDETAILS
 
             return (
                 <>
@@ -133,6 +139,7 @@ class HomesShow extends Component {
                     <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
                     <title>{`${streetNumber} ${route} #${unitNumber}, ${city}, ${state} ${zipcode}`} | Shimbly</title>
                 </Helmet>
+                <Navbar />
                 <FilterBar />
                 <div className='container'>
                     <Carousel images={this.props.homes.undefined.imageUrls} />
@@ -198,6 +205,7 @@ class HomesShow extends Component {
     };
 };
 
+// Maps state to props
 const mapStateToProps = (state) => {
     return {
         homes: state.homes

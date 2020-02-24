@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
 import homesReducer from './homesReducer';
 import listReducer from './listReducer';
-import listingsReducer from './listingsReducer';
+
+// Sets state for mapStateToProps functions
 
 export default combineReducers({
     homes: homesReducer,
-    list: listReducer,
-    listings: listingsReducer
+    list: listReducer
 });

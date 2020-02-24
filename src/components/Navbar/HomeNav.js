@@ -3,15 +3,15 @@ import { NavLink, Link } from 'react-router-dom';
 import NavAuth from './NavAuth';
 import './Navbar.css';
 
-// General Navbar
+// Navbar for only home page
 
-const Navbar = () => {
+const HomeNav = () => {
     return (
-        <nav className="ui large borderless menu">
+        <nav className="ui large borderless menu transparent">
             <div className="ui container">
                 <div className="left menu">
                     <Link
-                        className="ui header large item"
+                        className="ui header large item white"
                         to="/">shimbly
                     </Link>
                     <div className="item">
@@ -29,7 +29,7 @@ const Navbar = () => {
                         Learn
                     </NavLink>
                     <NavLink
-                        className='item'
+                        className='item white'
                         to='/homes'
                     >
                         Buy
@@ -47,4 +47,4 @@ const Navbar = () => {
     );
 };
 
-export default Navbar;
+export default HomeNav;

@@ -3,6 +3,9 @@ import './HomeList.css';
 
 import HouseCard from '../HouseCard/HouseCard';
 
+// Returns all listings specified from survey, filter, etc
+// Have to loop through location portion of API to find specific parts of addresses
+
 function addressFilter(prop, value) {
     const location = prop;
 

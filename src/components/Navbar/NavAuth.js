@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Amplify, { Auth, Hub } from 'aws-amplify';
 import aws_exports from '../../aws-exports';
 
+// Configures log in, needs to be updated to share state preferably
+
 Amplify.configure(aws_exports);
 
 class NavAuth extends Component {
@@ -34,7 +36,7 @@ class NavAuth extends Component {
       <div className="item">
         {!user && (
           <a
-            className='ui inverted blue button'
+            className='ui blue button'
             onClick={() => {
               Auth.federatedSignIn();
             }}
@@ -45,7 +47,7 @@ class NavAuth extends Component {
 
         {user && user.attributes && (
           <a
-            className='ui inverted blue button'
+            className='ui blue button'
             onClick={() => {
               Auth.signOut().catch((error) => {
                 console.log('=== signOut error:', error);
