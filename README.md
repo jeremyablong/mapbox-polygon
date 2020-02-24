@@ -78,9 +78,15 @@ All files have comments on how they work or why they are there too.
 Folders are structured as follows:
 
 **pages** - All pages that are needed by project
+
 **containers** - Any type of container components, App.js is only thing in here for routing
+
 **components** - Contains all heavily used components or rendering of data for smaller parent components
+
 **actions** - (Redux related) - Contains all heavily used actions for universal state management
+
 **reducers** - (Redux related) - Contains reducers for action payloads to be added to state
+
 **apis** - Base url files for axios requests
+
 **assets** - Any local images, fonts, etc
