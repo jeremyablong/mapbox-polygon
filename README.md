@@ -1,6 +1,8 @@
 # Shimbly
 
+
 ## If you would like information on project structure, please scroll down
+
 
 ## Before running `npm start`
 
@@ -67,13 +69,20 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 Project is done using **React.js** and **Redux**.
 
-To avoid future confusion, please be aware of how React and Redux work together.
+CSS framework used is Semantic UI.
+
+
+To avoid future confusion, please be aware of how React and Redux work together. Semantic UI link below as well.
 
 **React** - (https://reactjs.org/docs/getting-started.html)
 
 **Redux** - (https://redux.js.org/introduction/getting-started)
 
+**Semantic UI** - (https://semantic-ui.com/introduction/getting-started.html)
+
+
 All files have comments on how they work or why they are there too.
+
 
 Folders are structured as follows:
 
