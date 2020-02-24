@@ -3,6 +3,9 @@ import './Pagination.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
+// Pagination for all listings page
+// Currently supports next and prev navigation, all other components are hard coded and disabled
+
 const PaginationNav = (props) => {
     const totalItems = props.totalItems;
     const totalPages = props.totalPages;

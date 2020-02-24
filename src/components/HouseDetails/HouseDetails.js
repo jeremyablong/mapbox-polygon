@@ -1,7 +1,9 @@
 import React from 'react';
 import './HouseDetails.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBed, faBath, faParking, faThLarge } from '@fortawesome/free-solid-svg-icons';
+import { faParking } from '@fortawesome/free-solid-svg-icons';
+
+// Renders single page listing
 
 const HouseDetails = (props) => {
     return (
@@ -11,9 +13,9 @@ const HouseDetails = (props) => {
                 <div className='details-price'>{props.listPrice}</div>
                 <div className='details-location'>{`${props.city}, ${props.state} ${props.zipcode}`}</div>
                 <div className='details-amenities'>
-                    <div><FontAwesomeIcon icon={faBed} /><span>{`${props.bedrooms} Beds`}</span></div>
-                    <div><FontAwesomeIcon icon={faBath} /><span>{`${props.bathrooms} Baths`}</span></div>
-                    <div><FontAwesomeIcon icon={faThLarge} /><span>{props.sqft}</span></div>
+                    <div><i className="bed icon"></i><span>{`${props.bedrooms} Beds`}</span></div>
+                    <div><i className="bath icon"></i><span>{`${props.bathrooms} Baths`}</span></div>
+                    <div><i className="ruler combined icon"></i><span>{props.sqft}</span></div>
                     <div><FontAwesomeIcon icon={faParking} /><span>{props.parking === 'N' ? 'None' : props.parking === 'G' ? 'Garage' : props.parking === 'S' ? 'Space' : 'None'}</span></div>
                 </div>
                 <hr />

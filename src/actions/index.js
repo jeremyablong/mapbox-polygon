@@ -1,12 +1,13 @@
 import listings from '../apis/listings';
 import polygon from '../apis/polygon';
-import history from '../history';
 import {
     FETCH_HOMES,
-    FETCH_HOME,
-    FETCH_LISTINGS
+    FETCH_HOME
 } from './types';
 
+// Fetchs Data
+// Use this for filtering data by adding params from swagger api
+// and passing data from survey form, filter buttons, etc
 async function fetchData() {
     const response = await polygon.get('/qps', {
         params: {
@@ -18,12 +19,8 @@ async function fetchData() {
     return response;
 }
 
-export const fetchListings = () => async dispatch => {
-    const response = await fetchData();
-
-    dispatch({ type: FETCH_LISTINGS, payload: response.data });
-}
-
+// Fetchs Data for single listing
+// Route = /homes/details/:id
 export const fetchHome = (id) => async dispatch => {
     const response = await listings.get(`/${id}`);
     const photoCount = response.data.item.PHOTOCOUNT;
@@ -36,6 +33,8 @@ export const fetchHome = (id) => async dispatch => {
     dispatch({ type: FETCH_HOME, payload: response });
 }
 
+// Calls fetchData function from params specified, then returns all home results as list
+// Route = /homes
 export const fetchHomes = (currentPage, limit) => async dispatch => {
     const response = await fetchData();
     const totalItems = response.data.items.length;

@@ -4,6 +4,8 @@ import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import './FilterBar.css'
 
+// Filter Bar for single home listings
+
 const FilterBar = () => {
     return (
         <div className='ui secondary menu'>

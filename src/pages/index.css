@@ -1,0 +1,25 @@
+.home-page {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    background-image: url('../assets/homepage.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.extreme {
+    font-size: 64px !important;
+}
+
+.ui.blue.button {
+    background-color: rgb(179, 221, 249);
+}
+
+.ui.blue.button:hover {
+    background-color: rgb(155, 190, 214);
+}

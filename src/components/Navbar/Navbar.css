@@ -1,3 +1,28 @@
+nav.ui.large.borderless.menu {
+    position: relative;
+    z-index: 100;
+}
+
 a.ui.header.large.item:hover, .ui.menu a.item:hover {
     background: transparent;
+}
+
+.ui.inverted.blue.button {
+    box-shadow: 0 0 0 2px #B3DDF2 inset;
+    color:#B3DDF2;
+}
+
+.ui.inverted.blue.button:hover {
+    background-color:#B3DDF2;
+}
+
+.white {
+    color: white !important;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+}
+
+.transparent {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
 }
