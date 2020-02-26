@@ -22,6 +22,7 @@ class HomesList extends Component {
     // Shows next page of listings
     toNextPage = () => {
         if(this.state.currentPage !== this.props.list.undefined.totalPages) {
+            this.updateData();
             this.setState({ currentPage: this.state.currentPage + 1 });
         }
     }
@@ -29,6 +30,7 @@ class HomesList extends Component {
     // Shows previous page of listings
     toPrevPage = () => {
         if(this.state.currentPage > 1) {
+            this.updateData();
             this.setState({ currentPage: this.state.currentPage - 1 });
         }
     }
@@ -48,9 +50,9 @@ class HomesList extends Component {
 
     // Fetchs data on update of state
     // IMPORTANT - If not done in this manner, page number was updating incorrectly or taking extra clicks
-    componentDidUpdate() {
-        this.updateData();
-    }
+    // componentDidUpdate() {
+    //     this.updateData();
+    // }
 
     render() {
         const listProp = this.props.list.undefined;  // Sets const for global shorthand

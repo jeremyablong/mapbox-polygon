@@ -12,8 +12,8 @@ const awsmobile = {
     "oauth": {
         "domain": "shimblyportal097db43b-097db43b-test.auth.us-east-2.amazoncognito.com",
         "scope": ["phone", "email", "openid", "profile", "aws.cognito.signin.user.admin"],
-        "redirectSignIn": "http://localhost:3000",
-        "redirectSignOut": "http://localhost:3000",
+        "redirectSignIn": "https://chimle.com",
+        "redirectSignOut": "https://chimle.com",
         "responseType": "code"
       },
       "federationTarget": "COGNITO_USER_AND_IDENTITY_POOLS"

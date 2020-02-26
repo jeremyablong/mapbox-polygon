@@ -3,5 +3,5 @@ import axios from 'axios';
 // Base URL for API requests to Swagger API
 
 export default axios.create({
-    baseURL: 'http://18.216.141.175:3222'
+    baseURL: 'https://ftlsugcyt6.execute-api.us-east-2.amazonaws.com/dev'
 });

@@ -16,7 +16,7 @@ const Navbar = () => {
                     </Link>
                     <div className="item">
                         <form className="ui icon input">
-                            <input type="text" placeholder="Search an address, neighborhood, city, or ZIP code" />
+                            <input type="text" placeholder="Search Landmarks...." />
                             <i className="search link icon"></i>
                         </form>
                     </div>
