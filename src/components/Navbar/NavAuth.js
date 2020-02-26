@@ -8,6 +8,11 @@ Amplify.configure(aws_exports);
 
 class NavAuth extends Component {
   state = { user: null };
+  Auth.currentAuthenticatedUser().then(user => {
+    this.setState({ user });
+  }).catch(e => {
+    console.log(e);
+  });
 
   componentDidMount() {
     Hub.listen("auth", ({ payload: { event, data } }) => {
@@ -20,7 +25,6 @@ class NavAuth extends Component {
           break;
         default:
           Auth.currentAuthenticatedUser().then(user => {
-            console.log(user);
             this.setState({ user });
           }).catch(e => {
             console.log(e);
