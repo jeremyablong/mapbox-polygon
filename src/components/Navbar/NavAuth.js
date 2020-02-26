@@ -1,18 +1,8 @@
-import React, { Component } from 'react';
-import Amplify, { Auth, Hub } from 'aws-amplify';
-import aws_exports from '../../aws-exports';
+import React from 'react';
+import { Auth, Hub } from 'aws-amplify';
 
-// Configures log in, needs to be updated to share state preferably
-
-Amplify.configure(aws_exports);
-
-class NavAuth extends Component {
+class NavAuth extends React.Component {
   state = { user: null };
-  Auth.currentAuthenticatedUser().then(user => {
-    this.setState({ user });
-  }).catch(e => {
-    console.log(e);
-  });
 
   componentDidMount() {
     Hub.listen("auth", ({ payload: { event, data } }) => {
@@ -27,7 +17,7 @@ class NavAuth extends Component {
           Auth.currentAuthenticatedUser().then(user => {
             this.setState({ user });
           }).catch(e => {
-            console.log(e);
+            console.log('Error: ', e);
           });
       }
     });
