@@ -26,6 +26,7 @@ class HomesShow extends Component {
     }
 
     render() {
+        const url = this.props.match.params.id;
         const homeProp = this.props.homes.undefined;  // Global const for shorthand of other variables
 
         if(!homeProp) {
@@ -35,19 +36,12 @@ class HomesShow extends Component {
             let homeProp = this.props.homes.undefined.data;
             let homeItem = homeProp.item;
             let unitNumber = parseInt(homeItem.UN);
-
-            let listPrice = parseInt(homeItem.LP);
-            if (listPrice > 0) {
-                listPrice = listPrice.toLocaleString(navigator.language, {
-                    style: 'currency',
-                    currency: 'usd',
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0
-                });
-            } else {
-                listPrice = '$CALL';
-            }
-
+            let listPrice = parseInt(homeItem.LP).toLocaleString(navigator.language, {
+                style: 'currency',
+                currency: 'usd',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            });
             let bedrooms = parseInt(homeItem.BR_CUSTOM);
             let bathrooms = (parseInt(homeItem.FULL_BATHS_CUSTOM) + parseInt(homeItem.HALF_BATHS));
             let roomsTotal = homeItem.RMS;
@@ -138,6 +132,7 @@ class HomesShow extends Component {
                 <div className='container'>
                     <Carousel images={this.props.homes.undefined.imageUrls} />
                     <HouseDetails
+                        url={url}
                         streetNumber={streetNumber}
                         route={route}
                         city={city}
