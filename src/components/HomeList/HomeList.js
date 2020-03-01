@@ -8,20 +8,8 @@ import HouseCard from '../HouseCard/HouseCard';
 
 function addressFilter(prop, value) {
     const location = prop;
-
-    for(let i = 0; i < location.length; i++){
-        if(location[i].types.length > 1){
-            for(let j = 0; j < location[i].types.length; j++){
-                if(location[i].types[j] == value){
-                    return location[i];
-                }
-            };
-        } else {
-            if(location[i].types == value){
-                return location[i];
-            }
-        }
-    }
+    const addressComponent = location.find(({ types }) => types.includes(value));
+    return addressComponent || { short_name: '', long_name: '' }
 }
 
 function renderList(props) {
@@ -71,7 +59,7 @@ function renderList(props) {
                 price={listPrice}
                 bedrooms={isNaN(bedrooms) ? 0 : bedrooms}
                 bathrooms={isNaN(bathrooms) ? 0 : bathrooms}
-                sqft={isNaN(sqft) ? `${acres} acres` : `${sqft} sqft`} 
+                sqft={isNaN(sqft) ? `${acres} acres` : `${sqft} sqft`}
             />
         )
     })

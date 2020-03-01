@@ -22,25 +22,12 @@ class HomesShow extends Component {
     // Loops to find specific address data from API
     addressFilter(value) {
         const location = this.props.homes.undefined.data.location.location.address_components;
-
-        for(let i = 0; i < location.length; i++){
-            if(location[i].types.length > 1){
-                for(let j = 0; j < location[i].types.length; j++){
-                    if(location[i].types[j] == value){
-                        return location[i];
-                    }
-                };
-            } else {
-                if(location[i].types == value){
-                    return location[i];
-                }
-            }
-        }
+        return location.find(({ types }) => types.includes(value));
     }
 
     render() {
         const homeProp = this.props.homes.undefined;  // Global const for shorthand of other variables
-        
+
         if(!homeProp) {
             return <Preloader />;
         } else {
@@ -168,42 +155,42 @@ class HomesShow extends Component {
                         roomsTotal={roomsTotal}
                         age={age}
                         propType={propType}
-                        exterior={exterior}  
-                        ac={ac} 
-                        heating={heating} 
-                        assessments={assessments} 
+                        exterior={exterior}
+                        ac={ac}
+                        heating={heating}
+                        assessments={assessments}
                         tax={tax}
-                        taxExempts={taxExempts}  
-                        petsAllowed={petsAllowed} 
-                        petsDetail={petsDetail}  
-                        petMaxWeight={petMaxWeight} 
-                        masterBedroomSize={masterBedroomSize} 
+                        taxExempts={taxExempts}
+                        petsAllowed={petsAllowed}
+                        petsDetail={petsDetail}
+                        petMaxWeight={petMaxWeight}
+                        masterBedroomSize={masterBedroomSize}
                         masterBedroomLevel={masterBedroomLevel}
                         masterBedroomFloor={masterBedroomFloor}
                         masterBedroomBath={masterBedroomBath}
                         bedroom2Size={bedroom2Size}
                         bedroom2Level={bedroom2Level}
-                        bedroom2Floor={bedroom2Floor} 
-                        bedroom3Size={bedroom3Size} 
-                        bedroom3Level={bedroom3Level} 
-                        bedroom3Floor={bedroom3Floor} 
-                        bedroom4Size={bedroom4Size} 
-                        bedroom4Level={bedroom4Level} 
-                        bedroom4Floor={bedroom4Floor} 
-                        livingroomSize={livingroomSize} 
-                        livingroomLevel={livingroomLevel} 
-                        livingroomFloor={livingroomFloor} 
-                        diningroomSize={diningroomSize} 
-                        diningroomLevel={diningroomLevel} 
-                        diningroomFloor={diningroomFloor} 
+                        bedroom2Floor={bedroom2Floor}
+                        bedroom3Size={bedroom3Size}
+                        bedroom3Level={bedroom3Level}
+                        bedroom3Floor={bedroom3Floor}
+                        bedroom4Size={bedroom4Size}
+                        bedroom4Level={bedroom4Level}
+                        bedroom4Floor={bedroom4Floor}
+                        livingroomSize={livingroomSize}
+                        livingroomLevel={livingroomLevel}
+                        livingroomFloor={livingroomFloor}
+                        diningroomSize={diningroomSize}
+                        diningroomLevel={diningroomLevel}
+                        diningroomFloor={diningroomFloor}
                         kitchenSize={kitchenSize}
-                        kitchenLevel={kitchenLevel} 
-                        kitchenFloor={kitchenFloor} 
-                        appliances={appliances} 
-                        interiorFeatures={interiorFeatures} 
-                        exteriorFeatures={exteriorFeatures} 
+                        kitchenLevel={kitchenLevel}
+                        kitchenFloor={kitchenFloor}
+                        appliances={appliances}
+                        interiorFeatures={interiorFeatures}
+                        exteriorFeatures={exteriorFeatures}
                         amenities={amenities}
-                        assoAmentities={assoAmentities} 
+                        assoAmentities={assoAmentities}
                     />
                 </div>
                 </>

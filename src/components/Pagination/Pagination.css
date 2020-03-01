@@ -13,16 +13,23 @@
 .pagination-nav ul {
     display: flex;
     list-style-type: none !important;
+    color: rgb(217, 217, 217);
 }
 
 .pagination-nav li {
+    margin-right: 8px;
+}
+
+.pagination-nav li .button {
     height: 32px;
     min-width: 32px;
     line-height: 32px;
     border: 1px solid rgb(217, 217, 217);
     border-radius: 4px;
     text-align: center;
-    margin-right: 8px;
+}
+
+.pagination-nav li a .button  {
     cursor: pointer;
 }
 
