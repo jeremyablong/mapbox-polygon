@@ -11,6 +11,7 @@
 }
 
 .map-area {
+    position: relative;
     width: 60vw;
     background: #9d9d9d;
 }

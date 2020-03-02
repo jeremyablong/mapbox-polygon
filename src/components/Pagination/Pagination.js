@@ -21,7 +21,7 @@ const PaginationNav = (props) => {
     const totalItems = props.totalItems;
     const totalPages = props.totalPages;
     const start = props.start;
-    const end = props.end;
+    const end = props.end > totalItems ? totalItems : props.end;
     const currentPage = props.currentPage;
     const disabled = props.disabled;
     const prevDisabled = disabled || currentPage - 1 < 1;
