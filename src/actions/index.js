@@ -21,18 +21,20 @@ export const fetchHome = (id) => async dispatch => {
 
 // Calls polygon API function from params specified, then returns all home results as list
 // Route = /homes
-export const fetchHomes = (currentPage, limit) => async dispatch => {
+export const fetchHomes = (polyCoords, currentPage, limit) => async dispatch => {
     const defaultData = {
-        polygon: '-88.774948,42.458859;-86.432490,42.458859;-86.432490,41.081374;-88.774948,41.081374',
-        proptype: 'condominium'
+        // polygon: '-88.774948,42.458859;-86.432490,42.458859;-86.432490,41.081374;-88.774948,41.081374',
+        polygon: polyCoords,
+        proptype: 'townhome'
     };
     const response = await polygon.get('/qps', {params: defaultData});
-    
+
     const totalItems = response.data.items.length;
     const totalPages = Math.ceil(totalItems / limit);
 
-    const indexOfLastPost = currentPage * limit;
-    const indexOfFirstPost = indexOfLastPost - limit;
+    const singlePageList = totalItems <= limit;
+    const indexOfLastPost = singlePageList ? totalItems : currentPage * limit;
+    const indexOfFirstPost = (currentPage - 1) * limit;
 
     const polyResponse = response.data.items.slice(indexOfFirstPost, indexOfLastPost);
 
@@ -54,6 +56,8 @@ export const fetchHomes = (currentPage, limit) => async dispatch => {
     listingsData.totalPages = totalPages;
     listingsData.start = indexOfFirstPost;
     listingsData.end = indexOfLastPost;
+    listingsData.polygon = polyCoords;
+    listingsData.limit = singlePageList ? totalItems : limit;
 
     dispatch({ type: FETCH_HOMES, payload: listingsData });
 }
