@@ -4,7 +4,9 @@ import "./MapArea.css";
 import mapboxgl from "mapbox-gl";
 import Select from "react-select";
 import { v4 as uuid } from 'uuid'
-import { polyCoordsToGeoJson } from '../../utils/geoJsonUtil'
+import { polyCoordsToGeoJson } from '../../utils/geoJsonUtil';
+import { connect } from "react-redux";
+import { coords } from "../../actions/coords.js";
 
 const methodOptions = [
   { value: "driving", label: "Driving" },
@@ -46,7 +48,7 @@ class MapArea extends Component {
     const map = new mapboxgl.Map({
       container: "map",
       style: "mapbox://styles/mapbox/streets-v8",
-      center: [this.state.longitude, this.state.latitude],
+      center: [this.props.lng, this.props.lat],
       zoom: 10
     });
 
@@ -59,7 +61,7 @@ class MapArea extends Component {
           type: "Feature",
           geometry: {
             type: "Point",
-            coordinates: [this.state.longitude, this.state.latitude]
+            coordinates: [this.props.lng, this.props.lat]
           }
         }
       ]
@@ -85,6 +87,7 @@ class MapArea extends Component {
         latitude: coords.lat,
         longitude: coords.lng
       }, () => {
+        this.props.coords(coords.lng, coords.lat);
         this.renderSubmit(coords.lng, coords.lat);
       });
     };
@@ -154,46 +157,51 @@ class MapArea extends Component {
       });
     });
 
-    this.setState({ map });
+    this.setState({ 
+      map 
+    });
   }
 
   handleMethodChange = selectedOption => {
+    const { lat, lng } = this.props;
     this.setState(
       {
         method: selectedOption
       },
       () => {
-        this.renderSubmit(this.state.longitude, this.state.latitude);
+        this.props.coords(lng, lat);
+        this.renderSubmit(lng, lat);
       }
     );
   };
 
   handleTimeChange = selectedOption => {
+    const { lat, lng } = this.props;
     this.setState(
       {
         time: selectedOption
       },
       () => {
-        this.renderSubmit(this.state.longitude, this.state.latitude);
+        this.props.coords(lng, lat);
+        this.renderSubmit(lng, lat);
       }
     );
   };
-
   renderSubmit = (lng, lat) => {
     const { method, time } = this.state;
 
     mapboxgl.accessToken =
       "pk.eyJ1IjoicmFtYW5zaWxpbiIsImEiOiJjazM2enltOTUwNnJlM2hzYmh4cXB4cjA2In0.82QNIE5jNkfJC4eKac0BSw";
 
-    const mapBoxUrl = `https://api.mapbox.com/isochrone/v1/mapbox/${method.value}/${lng},${lat}?contours_minutes=${time.value}&polygons=true&access_token=pk.eyJ1IjoicmFtYW5zaWxpbiIsImEiOiJjazM2enltOTUwNnJlM2hzYmh4cXB4cjA2In0.82QNIE5jNkfJC4eKac0BSw`;
+    const mapBoxUrl = `https://api.mapbox.com/isochrone/v1/mapbox/${method.value}/${this.props.lng},${this.props.lat}?contours_minutes=${time.value}&polygons=true&access_token=pk.eyJ1IjoicmFtYW5zaWxpbiIsImEiOiJjazM2enltOTUwNnJlM2hzYmh4cXB4cjA2In0.82QNIE5jNkfJC4eKac0BSw`;
 
     axios.get(mapBoxUrl).then(res => {
       this.setState(
         {
           data: res.data.features,
           id: uuid()
-        },
-        () => {
+        }, () => {
+          
           this.setState({
             data: this.state.data[0].geometry
           });
@@ -206,6 +214,7 @@ class MapArea extends Component {
                 coordinates: this.state.data.coordinates
               }
             }
+            
             this.state.map.getSource("region").setData(geoJson)
 
             this.props.updateCoords(this.state.data.coordinates[0])
@@ -214,8 +223,16 @@ class MapArea extends Component {
       );
     });
   };
-
+  renderStoreChanges = () => {
+    if (this.props.lat && this.props.lng) {
+      console.log("got both")
+    }
+  }
+  componentDidUpdate () {
+    console.log("changesx") 
+  }
   render() {
+    console.log(this.state);
     const { time, method } = this.state;
     return (
       <div className="MapArea">
@@ -232,9 +249,17 @@ class MapArea extends Component {
           options={timeOptions}
           placeholder="Distance"
         />
+        {this.renderStoreChanges()}
       </div>
     );
   }
 }
+const mapStateToProps = (state) => {
+  console.log("state :", state);
+  return {
+    lat: state.coords.lat ? state.coords.lat : 42.06050735516348,
+    lng: state.coords.lng ? state.coords.lng : -87.70440464394191
+  }
+}
 
-export default MapArea;
+export default connect(mapStateToProps, { coords })(MapArea);

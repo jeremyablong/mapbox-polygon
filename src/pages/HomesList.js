@@ -84,7 +84,7 @@ class HomesList extends Component {
                     <Navbar />
                     <div className='listings-container'>
                         <div className='map-area'>
-                            <MapArea
+                            <MapArea 
                                 coords={polyCoords}
                                 updateCoords={this.updateCoords}
                             />

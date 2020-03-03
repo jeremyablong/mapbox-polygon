@@ -23,3 +23,7 @@ ReactDOM.render(
     </Provider>,
     document.querySelector('#root')
 );
+
+store.subscribe(() => {
+	console.log("Store is now: ", store.getState());
+})
