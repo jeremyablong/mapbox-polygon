@@ -20,10 +20,14 @@ constructor(props) {
         this.props.LNNumber(this.props.ln);
         this.props.coords(this.props.longitude, this.props.latitude);
     }
+    exit = () => {
+        console.log("exit");
+        this.props.coords(null, null);
+    }
     render () {
         console.log("second props", this.props)
         return (
-            <Link onMouseEnter={this.renderHoverLogic} className='house-card-item' to={`/homes/details/${this.props.link}`}>
+            <Link onMouseEnter={this.renderHoverLogic} onMouseLeave={this.exit} className='house-card-item' to={`/homes/details/${this.props.link}`}>
                 <div className='house-image'>
                     <img src={this.props.image} alt={this.props.image} />
                 </div>

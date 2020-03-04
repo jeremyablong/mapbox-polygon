@@ -39,7 +39,8 @@ class MapArea extends Component {
         label: "15 Min"
       },
       map: null,
-      uniqueID: null
+      uniqueID: null,
+      secondID: 128181
     };
   }
 
@@ -253,6 +254,7 @@ class MapArea extends Component {
                   'fill-opacity': 0.8
                 }
               });
+              
 
 
           }, 300);
@@ -260,8 +262,50 @@ class MapArea extends Component {
       );
     });
   };
-  componentDidUpdate () {
-    console.log("changes updated!") 
+  renderReduxCoordChanges = () => {
+    const ID = uuid();
+
+    const { lat, lng } = this.props;
+
+    if ((lat === null || lat === 42.06050735516348) && (lng === null || lng === -87.70440464394191)) {
+      console.log("Nothing");
+       if (typeof this.state.secondID === "string") {
+        this.state.map.removeLayer(ID);
+       }
+      // aka do nothing
+    } else {
+      console.log("this.props.lat && this.props.lng EXISTS.");
+      // do our logic here
+
+
+
+      const geojson = {
+        type: "FeatureCollection",
+        features: [
+          {
+            type: "Feature",
+            geometry: {
+              type: "Point",
+              coordinates: [this.props.lng, this.props.lat]
+            }
+          }
+        ]
+      };
+      this.state.map.addSource(ID, {
+        type: "geojson",
+        data: geojson
+      });
+
+      this.state.map.addLayer({
+        id: ID,
+        type: "circle",
+        source: "point",
+        paint: {
+          "circle-radius": 30,
+          "circle-color": "#3887be"
+        }
+      });
+    }
   }
   render() {
     console.log(this.state);
@@ -281,6 +325,7 @@ class MapArea extends Component {
           options={timeOptions}
           placeholder="Distance"
         />
+        {this.renderReduxCoordChanges()}
       </div>
     );
   }
