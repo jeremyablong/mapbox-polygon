@@ -38,7 +38,8 @@ class MapArea extends Component {
         value: "15",
         label: "15 Min"
       },
-      map: null
+      map: null,
+      uniqueID: null
     };
   }
 
@@ -88,8 +89,13 @@ class MapArea extends Component {
         longitude: coords.lng
       }, () => {
         this.props.coords(coords.lng, coords.lat);
-        this.renderSubmit(coords.lng, coords.lat);
+        setTimeout(() => {
+           this.renderSubmit(coords.lng, coords.lat);
+        }, 100);
+
       });
+
+      this.state.map.removeLayer(this.state.uniqueID);
     };
 
     map.on("load", () => {
@@ -109,21 +115,21 @@ class MapArea extends Component {
         }
       });
 
-      map.addSource('region', {
-        type: 'geojson',
-        data: polyCoordsToGeoJson(this.props.coords)
-      })
+      // map.addSource('region', {
+      //   type: 'geojson',
+      //   data: polyCoordsToGeoJson(this.props.coords)
+      // })
 
-      map.addLayer({
-        id: 'region',
-        type: "fill",
-        source: 'region',
-        layout: {},
-        paint: {
-          "fill-color": "#088",
-          "fill-opacity": 0.8
-        }
-      });
+      // map.addLayer({
+      //   id: 'region',
+      //   type: "fill",
+      //   source: 'region',
+      //   layout: {},
+      //   paint: {
+      //     "fill-color": "#088",
+      //     "fill-opacity": 0.8
+      //   }
+      // });
 
       // When the cursor enters a feature in the point layer, prepare for dragging.
       map.on("mouseenter", "point", function() {
@@ -170,7 +176,10 @@ class MapArea extends Component {
       },
       () => {
         this.props.coords(lng, lat);
-        this.renderSubmit(lng, lat);
+        this.state.map.removeLayer(this.state.uniqueID);
+        setTimeout(() => {
+          this.renderSubmit(lng, lat);
+        }, 300);
       }
     );
   };
@@ -183,7 +192,11 @@ class MapArea extends Component {
       },
       () => {
         this.props.coords(lng, lat);
-        this.renderSubmit(lng, lat);
+        this.state.map.removeLayer(this.state.uniqueID);
+        setTimeout(() => {
+           this.renderSubmit(lng, lat);
+        }, 300);
+       
       }
     );
   };
@@ -214,22 +227,41 @@ class MapArea extends Component {
                 coordinates: this.state.data.coordinates
               }
             }
-            
-            this.state.map.getSource("region").setData(geoJson)
+              const ID = uuid();
 
-            this.props.updateCoords(this.state.data.coordinates[0])
+              this.setState({
+                uniqueID: ID
+              })
+           
+              this.state.map.addSource(ID, {
+                'type': 'geojson',
+                'data': {
+                'type': 'Feature',
+                  'geometry': {
+                  'type': 'Polygon',
+                  'coordinates': this.state.data.coordinates
+                  }
+                }
+              });
+              this.state.map.addLayer({
+                  'id': ID,
+                  'type': 'fill',
+                  'source': ID,
+                  'layout': {},
+                  'paint': {
+                  'fill-color': '#088',
+                  'fill-opacity': 0.8
+                }
+              });
+
+
           }, 300);
         }
       );
     });
   };
-  renderStoreChanges = () => {
-    if (this.props.lat && this.props.lng) {
-      console.log("got both")
-    }
-  }
   componentDidUpdate () {
-    console.log("changesx") 
+    console.log("changes updated!") 
   }
   render() {
     console.log(this.state);
@@ -249,7 +281,6 @@ class MapArea extends Component {
           options={timeOptions}
           placeholder="Distance"
         />
-        {this.renderStoreChanges()}
       </div>
     );
   }
